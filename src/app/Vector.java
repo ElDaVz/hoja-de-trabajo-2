@@ -1,8 +1,6 @@
 package app;
 
-public class Vector implements Collections<T> {
-
-
+public class Vector<T> implements Stack<T> {
     @Override
     public void push(T element) {
 

@@ -1,5 +1,5 @@
 package app;
-public interface Collections<T> {
+public interface Stack<T> {
 
     void push(T element);
 
