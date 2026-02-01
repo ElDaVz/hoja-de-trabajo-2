@@ -24,6 +24,9 @@ public class StackVector<T> implements Stack<T> {
 
     @Override
     public T peek() {
+        if (vector.isEmpty()) {
+            return null;
+        }
         return vector.getLast();
     }
 }
