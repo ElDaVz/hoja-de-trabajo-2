@@ -2,26 +2,26 @@ package app;
 
 public enum Operator {
 
-    SUMA{
+    SUMA("+") {
         @Override
         public int operate(int a, int b) {
             return a + b;
         }
 
     },
-    RESTA{
+    RESTA("-") {
         @Override
         public int operate(int a, int b) {
             return a - b;
         }
     },
-    MULTIPLICACION{
+    MULTIPLICACION("*") {
         @Override
         public int operate(int a, int b) {
             return a * b;
         }
     },
-    DIVISION{
+    DIVISION("/") {
         @Override
         public int operate(int a, int b) {
             try {
@@ -33,6 +33,10 @@ public enum Operator {
     };
 
     private String symbol;
+
+    Operator(String symbol) {
+        this.symbol = symbol;
+    }
 
     abstract public int operate(int a, int b);
 }
