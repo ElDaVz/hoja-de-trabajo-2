@@ -11,12 +11,12 @@ public class StackTests {
     public StackTests() {}
 
     private Stack<Integer> stack;
-    private final String path = "C:\\Users\\Danri\\Documents\\datos.txt";
+
 
     @BeforeEach
     void setUp() {
         stack = new StackVector<>();
-        var line = Reader.readFile(path);
+
     }
 
     @Test
@@ -33,7 +33,4 @@ public class StackTests {
         stack.push(2);
         assertEquals(2, stack.peek(), "stack should be pushed and contain int 2");
     }
-
-    @Test
-    void verifyStack
 }
