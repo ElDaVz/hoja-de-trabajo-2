@@ -1,7 +1,8 @@
 package app;
 
 public class PostFixCalculator implements Calc{
-    private Stack<Integer> stack = new StackVector<>();
+    private int INITIAL_MAX_LENGTH = 10;
+    private Stack<Integer> stack = new StackVector<>(INITIAL_MAX_LENGTH);
 
     @Override
     public int operate(String input) {
@@ -24,6 +25,6 @@ public class PostFixCalculator implements Calc{
             }
 
         }
-        return 0;
+        return stack.peek();
     }
 }

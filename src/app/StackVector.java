@@ -1,32 +1,41 @@
 package app;
-import java.util.Vector;
+import java.util.Arrays;
+import java.util.EmptyStackException;
 
 public class StackVector<T> implements Stack<T> {
+    private T[] items;
+    private int top = - 1;
 
-    private Vector<T> vector;
-
-    public StackVector() {
-        vector = new Vector<>();
+    public StackVector(int capacity) {
+        items =  (T[]) new Object[capacity];
     }
 
     @Override
     public void push(T element) {
-        vector.add(element);
+        if (top + 1 == items.length) {
+            items = Arrays.copyOf(items, items.length * 2);
+        }
+        top++;
+        items[top] = element;
     }
 
     @Override
     public T pop() {
-        var lastElement = vector.lastElement();
-        vector.remove(lastElement);
-
-        return lastElement;
+        if (top == - 1) {
+            throw new EmptyStackException();
+        }
+        var item = items[top];
+        items[top] = null;
+        top--;
+        return item;
     }
 
     @Override
     public T peek() {
-        if (vector.isEmpty()) {
-            return null;
+        if (top == - 1){
+            throw new EmptyStackException();
         }
-        return vector.getLast();
+
+        return items[top];
     }
 }
