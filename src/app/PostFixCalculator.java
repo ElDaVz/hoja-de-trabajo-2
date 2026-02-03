@@ -2,10 +2,12 @@ package app;
 
 public class PostFixCalculator implements Calc{
     private int INITIAL_MAX_LENGTH = 10;
-    private Stack<Integer> stack = new StackVector<>(INITIAL_MAX_LENGTH);
+    
 
     @Override
     public int operate(String input) {
+
+        Stack<Integer> stack = new StackVector<>(INITIAL_MAX_LENGTH);
 
         for(int i = 0; i < input.length(); i++){
             var token = input.charAt(i);
