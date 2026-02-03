@@ -58,4 +58,9 @@ public class PostFixCalculatorTest {
         assertThrows(Exception.class, () -> calc.operate("5+"), "Insufficient number of operands");
     }
 
+    @Test
+    void verifyOperandIsNotValidThrowsException() {
+        assertThrows(Exception.class, () -> calc.operate("5a"));
+    }
+
 }
