@@ -27,7 +27,7 @@ public enum Operator {
             try {
                 return a / b;
             } catch (ArithmeticException e) {
-                return 0;
+                throw new ArithmeticException("Division by zero");
             }
         }
     };

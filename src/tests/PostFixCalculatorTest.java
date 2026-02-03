@@ -43,8 +43,13 @@ public class PostFixCalculatorTest {
     }
 
     @Test
+    void verifyDivisionByZero() {
+        assertThrows(ArithmeticException.class, () -> calc.operate("80/"), "8 / 0 should be math error");
+    }
+
+    @Test
     void verifyComplexExpression() {
-        int result = calc.operate("52+83-*"); // (5 + 2) * (8 - 3)
+        var result = calc.operate("52+83-*"); // (5 + 2) * (8 - 3)
         assertEquals(35, result, "Expression should evaluate correctly");
     }
 
