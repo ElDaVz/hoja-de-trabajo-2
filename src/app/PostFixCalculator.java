@@ -9,13 +9,15 @@ public class PostFixCalculator implements Calc{
 
         for(int i = 0; i < input.length(); i++){
             var token = input.charAt(i);
+            var isOperator = Operator.returnOperation(token) != null;
+
 
             if (Character.isDigit(token)) {
                 stack.push(Character.getNumericValue(token));
                 OPERAND_COUNT++;
             }
 
-            else if (Operator.returnOperation(token) != null) {
+            else if (isOperator) {
                 if (OPERAND_COUNT < 2) {
                     throw new ArithmeticException("Operandos insuficientes para el operador: " + token);
                 }

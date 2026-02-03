@@ -38,8 +38,4 @@ public class StackVector<T> implements Stack<T> {
 
         return items[top];
     }
-
-    public int getTop() {
-        return top;
-    }
 }
