@@ -2,6 +2,13 @@ package app;
 import java.util.Arrays;
 import java.util.EmptyStackException;
 
+/**
+ * Implementación concreta del ADT Stack utilizando un arreglo dinámico.
+ * Esta clase maneja internamente el crecimiento del arreglo
+ * y lanza excepciones cuando se realizan operaciones inválidas.
+ *
+ * @param <T> Tipo de los elementos almacenados en la pila.
+ */
 public class StackVector<T> implements Stack<T> {
     private T[] items;
     private int top = - 1;

@@ -1,7 +1,20 @@
 package app;
-
+/**
+ * Implementación de una calculadora para expresiones en notación postfix.
+ * La evaluación se realiza utilizando una pila y un contador lógico
+ * para validar la corrección de la expresión sin depender
+ * de la implementación interna de la pila.
+ */
 public class PostFixCalculator implements Calc{
     private int INITIAL_MAX_LENGTH = 10;
+
+    /**
+     * Evalúa una expresión postfix carácter por carácter.
+     *
+     * @param input expresión postfix a evaluar.
+     * @return resultado de la expresión.
+     * @throws ArithmeticException si la expresión es inválida.
+     */
     @Override
     public int operate(String input) {
         var OPERAND_COUNT = 0;

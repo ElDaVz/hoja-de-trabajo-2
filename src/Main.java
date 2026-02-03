@@ -2,6 +2,12 @@ import app.Reader;
 import app.PostFixCalculator;
 import app.Calc;
 
+/**
+ * Clase principal del programa.
+ * Se encarga de leer expresiones postfix desde un archivo,
+ * evaluarlas utilizando la calculadora
+ * y mostrar los resultados o errores correspondientes.
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -12,7 +18,7 @@ public class Main {
                 int result = calculator.operate(expr);
                 System.out.println(expr + " = " + result);
             } catch (ArithmeticException | IllegalArgumentException e) {
-                System.out.println(String.format("%s: %s", expr, e.getMessage()));
+                System.out.printf("%s: %s%n", expr, e.getMessage());
             }
         }
     }

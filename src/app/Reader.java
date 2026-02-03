@@ -6,6 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+/**
+ * Clase utilitaria para la lectura de archivos de texto.
+ * Cada línea no vacía del archivo es leída, limpiada y almacenada
+ * para su posterior procesamiento.
+ */
 public class Reader {
 
     public static List<String> readFile(String path) {
