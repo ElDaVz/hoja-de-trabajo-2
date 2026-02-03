@@ -44,7 +44,6 @@ public class PostFixCalculatorTest {
 
     @Test
     void verifyComplexExpression() {
-        PostFixCalculator calc = new PostFixCalculator();
         int result = calc.operate("52+83-*"); // (5 + 2) * (8 - 3)
         assertEquals(35, result, "Expression should evaluate correctly");
     }
