@@ -1,9 +1,8 @@
 package tests;
 import app.Stack;
-import app.StackVector;
+import app.StackO;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
-import app.Reader;
 
 import java.util.EmptyStackException;
 
@@ -17,7 +16,7 @@ public class StackTests {
 
     @BeforeEach
     void setUp() {
-        stack = new StackVector<>(10);
+        stack = new StackO<>(10);
 
     }
 

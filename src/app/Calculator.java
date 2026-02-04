@@ -5,7 +5,7 @@ package app;
  * para validar la corrección de la expresión sin depender
  * de la implementación interna de la pila.
  */
-public class PostFixCalculator implements Calc{
+public class Calculator implements Calc{
     private int INITIAL_MAX_LENGTH = 10;
 
     /**
@@ -16,9 +16,9 @@ public class PostFixCalculator implements Calc{
      * @throws ArithmeticException si la expresión es inválida.
      */
     @Override
-    public int operate(String input) {
+    public double operate(String input) {
         var OPERAND_COUNT = 0;
-        Stack<Integer> stack = new StackVector<>(INITIAL_MAX_LENGTH);
+        Stack<Integer> stack = new StackO<>(INITIAL_MAX_LENGTH);
 
         for(int i = 0; i < input.length(); i++){
             var token = input.charAt(i);

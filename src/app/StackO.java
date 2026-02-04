@@ -9,11 +9,11 @@ import java.util.EmptyStackException;
  *
  * @param <T> Tipo de los elementos almacenados en la pila.
  */
-public class StackVector<T> implements Stack<T> {
+public class StackO<T> implements Stack<T> {
     private T[] items;
     private int top = - 1;
 
-    public StackVector(int capacity) {
+    public StackO(int capacity) {
         items =  (T[]) new Object[capacity];
     }
 

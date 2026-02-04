@@ -6,5 +6,5 @@ package app;
  */
 public interface Calc {
 
-    int operate(String input);
+    double operate(String input);
 }

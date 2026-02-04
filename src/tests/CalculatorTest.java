@@ -2,20 +2,20 @@ package tests;
 
 
 import app.Calc;
-import app.PostFixCalculator;
+import app.Calculator;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class PostFixCalculatorTest {
+public class CalculatorTest {
 
     private Calc calc;
 
     @BeforeEach
     void setUp() {
-        calc = new PostFixCalculator();
+        calc = new Calculator();
     }
 
     @Test
@@ -26,7 +26,7 @@ public class PostFixCalculatorTest {
 
     @Test
     void verifyMultipleOperations() {
-        int result = calc.operate("23+5*"); // (2 + 3) * 5
+        var result = calc.operate("23+5*"); // (2 + 3) * 5
         assertEquals(25, result, "(2 + 3) * 5 should equal 25");
     }
 
