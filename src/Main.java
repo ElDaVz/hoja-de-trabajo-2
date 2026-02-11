@@ -13,7 +13,7 @@ public class Main {
     public static void main(String[] args) {
 
         Calc calculator = new Calculator();
-        for (String expr : Reader.readFile("C:\\Users\\Danri\\Documents\\datos.txt")) {
+        for (String expr : Reader.readFile("datos.txt")) {
             try {
                 var result = calculator.operate(expr);
                 System.out.println(expr + " = " + result);
