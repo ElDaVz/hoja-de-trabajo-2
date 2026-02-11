@@ -7,7 +7,6 @@ package app;
  */
 public class Calculator implements Calc{
     private int INITIAL_MAX_LENGTH = 10;
-
     /**
      * Evalúa una expresión postfix carácter por carácter.
      *
