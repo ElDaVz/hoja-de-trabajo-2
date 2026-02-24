@@ -19,6 +19,11 @@ public class StackA<T> implements Stack<T> {
     }
 
     @Override
+    public boolean isEmpty() {
+        return items.isEmpty();
+    }
+
+    @Override
     public T pop() {
         if (items.isEmpty()) {
             throw new EmptyStackException();
@@ -30,4 +35,5 @@ public class StackA<T> implements Stack<T> {
     public void push(T element) {
         items.add(element);
     }
+
 }

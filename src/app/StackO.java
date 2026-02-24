@@ -45,4 +45,9 @@ public class StackO<T> implements Stack<T> {
 
         return items[top];
     }
+
+    @Override
+    public boolean isEmpty() {
+        return top == -1;
+    }
 }
