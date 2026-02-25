@@ -9,9 +9,8 @@ import java.util.EmptyStackException;
  *
  * @param <T> Tipo de los elementos almacenados en la pila.
  */
-public class StackO<T> implements Stack<T> {
+public class StackO<T> extends AbstractStack<T> {
     private T[] items;
-    private int top = - 1;
 
     public StackO(int capacity) {
         items =  (T[]) new Object[capacity];
@@ -19,35 +18,29 @@ public class StackO<T> implements Stack<T> {
 
     @Override
     public void push(T element) {
-        if (top + 1 == items.length) {
+        if (size  == items.length) {
             items = Arrays.copyOf(items, items.length * 2);
         }
-        top++;
-        items[top] = element;
+        this.size++;
+        items[size++] = element;
     }
 
     @Override
     public T pop() {
-        if (top == - 1) {
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
-        var item = items[top];
-        items[top] = null;
-        top--;
+        var item = items[this.size--];
+        items[this.size] = null;
         return item;
     }
 
     @Override
     public T peek() {
-        if (top == - 1){
+        if (isEmpty()) {
             throw new EmptyStackException();
         }
 
-        return items[top];
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return top == -1;
+        return items[size - 1];
     }
 }

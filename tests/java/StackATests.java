@@ -1,6 +1,5 @@
-package tests;
 import app.Stack;
-import app.StackO;
+import app.StackA;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -8,16 +7,14 @@ import java.util.EmptyStackException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class StackTests {
-    public StackTests() {}
+public class StackATests {
+    public StackATests() {}
 
     private Stack<Integer> stack;
 
-
     @BeforeEach
-    void setUp() {
-        stack = new StackO<>(10);
-
+    public void setUp() {
+        stack = new StackA<>(10);
     }
 
     @Test
@@ -38,5 +35,4 @@ public class StackTests {
     void verifyStackPopOnEmptyThrowsException() {
         assertThrows(EmptyStackException.class, () -> stack.pop(), "stack should be empty and throw the EmptyStackException");
     }
-
 }

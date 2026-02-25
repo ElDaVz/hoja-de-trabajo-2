@@ -2,7 +2,7 @@ package app;
 import java.util.ArrayList;
 import java.util.EmptyStackException;
 
-public class StackA<T> implements Stack<T> {
+public class StackA<T> extends AbstractStack<T> {
     private ArrayList<T> items;
 
     public StackA(int capacity) {

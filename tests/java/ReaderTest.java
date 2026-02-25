@@ -1,4 +1,3 @@
-package tests;
 import app.Reader;
 
 
@@ -19,7 +18,7 @@ public class ReaderTest {
 
     @Test
     public void testReadFileFromTestResource() {
-    List<String> result = Reader.readFile("C:\\Users\\Danri\\Documents\\datos.txt");
+    List<String> result = Reader.readFile("datos.txt");
     assertEquals(15, result.size());
 }
 

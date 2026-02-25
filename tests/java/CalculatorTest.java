@@ -1,6 +1,3 @@
-package tests;
-
-
 import app.Calc;
 import app.Calculator;
 import org.junit.jupiter.api.BeforeEach;
