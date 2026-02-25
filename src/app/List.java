@@ -31,4 +31,10 @@ public interface List<T> {
      * @return true si no hay elementos.
      */
     boolean isEmpty();
+
+    /**
+     * Retorna la cantidad de elementos en la lista.
+     * @return Número de elementos.
+     */
+    int size();
 }
