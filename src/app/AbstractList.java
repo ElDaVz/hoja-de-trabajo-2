@@ -19,21 +19,18 @@ public abstract class AbstractList<T> implements List<T> {
         this.size = 0;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
-    public boolean isEmpty() {
-        return size == 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
+    public boolean isEmpty() { return size == 0; }
 
     @Override
-    public int size() {
-        return size;
-    }
+    public int size() { return size; }
 
+    @Override
+    public abstract void add(T element);
+
+    @Override
+    public abstract T removeLast();
+
+    @Override
+    public abstract T getLast();
 }
