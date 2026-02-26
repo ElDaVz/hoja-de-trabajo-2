@@ -11,9 +11,18 @@ public class Main {
 
     public static void main(String[] args) {
 
+        int stackOpcion;
+        int listOpcion = 0;
 
-        int stackOpcion = StackFactory.askOption();
-        int listOpcion  = stackOpcion == 3 ? StackFactory.askListOption() : 0;
+        try {
+            stackOpcion = StackFactory.askOption();
+            if (stackOpcion == 3) {
+                listOpcion = StackFactory.askListOption();
+            }
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+            return;
+        }
 
         Stack<Character> converterStack  = StackFactory.create(stackOpcion, listOpcion);
         Stack<Integer>   calculatorStack = StackFactory.create(stackOpcion, listOpcion);

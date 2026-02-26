@@ -1,4 +1,5 @@
 package app;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class StackFactory {
@@ -11,7 +12,13 @@ public class StackFactory {
         System.out.println("  2. Arreglo dinámico (Vector)");
         System.out.println("  3. Lista encadenada");
         System.out.print("Ingrese una opción (1-3): ");
-        return sc.nextInt();
+        try {
+            int opcion = sc.nextInt();
+            if (opcion < 1 || opcion > 3) throw new IllegalArgumentException("Opción fuera de rango.");
+            return opcion;
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("Entrada inválida. Debe ingresar un número entre 1 y 3.");
+        }
     }
 
     public static int askListOption() {
@@ -19,7 +26,13 @@ public class StackFactory {
         System.out.println("  1. Simplemente encadenada");
         System.out.println("  2. Doblemente encadenada");
         System.out.print("Ingrese una opción (1-2): ");
-        return sc.nextInt();
+        try {
+            int opcion = sc.nextInt();
+            if (opcion < 1 || opcion > 2) throw new IllegalArgumentException("Opción fuera de rango.");
+            return opcion;
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("Entrada inválida. Debe ingresar un número entre 1 y 2.");
+        }
     }
 
 
