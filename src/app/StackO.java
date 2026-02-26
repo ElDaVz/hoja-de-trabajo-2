@@ -21,8 +21,8 @@ public class StackO<T> extends AbstractStack<T> {
         if (size  == items.length) {
             items = Arrays.copyOf(items, items.length * 2);
         }
-        this.size++;
-        items[size++] = element;
+        items[size] = element;
+        size++;
     }
 
     @Override
@@ -30,8 +30,9 @@ public class StackO<T> extends AbstractStack<T> {
         if (isEmpty()) {
             throw new EmptyStackException();
         }
-        var item = items[this.size--];
-        items[this.size] = null;
+        size--;
+        T item = items[size];
+        items[size] = null;
         return item;
     }
 

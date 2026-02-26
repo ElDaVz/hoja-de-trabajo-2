@@ -2,6 +2,13 @@ package app;
 
 public class InfixConverter {
 
+    private final Stack<Character> stack;
+
+    public InfixConverter(Stack<Character> stack) {
+        this.stack = stack;
+        this.stack.push('#');
+    }
+
     private int precedence(char op) {
         return switch (op) {
             case '+', '-' -> 1;
@@ -11,9 +18,11 @@ public class InfixConverter {
     }
 
     public String convert(String infix){
-        Stack<Character> stack = new StackO<>(10);
-        StringBuilder postfix = new StringBuilder();
+
+        while (!stack.isEmpty()) stack.pop();
         stack.push('#');
+
+        StringBuilder postfix = new StringBuilder();
 
         for (int i = 0; i < infix.length(); i++){
             char ch = infix.charAt(i);

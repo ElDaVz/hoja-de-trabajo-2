@@ -36,6 +36,7 @@ public class DoubleLinkedList<T> extends AbstractList<T> {
         Node<T> newNode = new Node<>(item);
         if (head == null) {
             head = newNode;
+            tail = newNode;
         } else {
             newNode.prev = tail;
             tail.next = newNode;

@@ -6,7 +6,24 @@ package app;
  * de la implementación interna de la pila.
  */
 public class Calculator implements Calc{
-    private int INITIAL_MAX_LENGTH = 10;
+
+    private static Calculator instance;
+    private Stack<Integer> stack;
+
+    private Calculator() {
+    }
+
+    public static Calculator getInstance() {
+        if (instance == null) {
+            instance = new Calculator();
+        }
+        return instance;
+    }
+
+    public void setStack(Stack<Integer> stack) {
+        this.stack = stack;
+    }
+
     /**
      * Evalúa una expresión postfix carácter por carácter.
      *
@@ -16,8 +33,13 @@ public class Calculator implements Calc{
      */
     @Override
     public double operate(String input) {
+        if (stack == null) {
+            throw new IllegalStateException("Debe asignar una implementación de Stack con setStack()");
+        }
+        while (!stack.isEmpty()) stack.pop();
+
+
         var OPERAND_COUNT = 0;
-        Stack<Integer> stack = new StackO<>(INITIAL_MAX_LENGTH);
 
         for(int i = 0; i < input.length(); i++){
             var token = input.charAt(i);
