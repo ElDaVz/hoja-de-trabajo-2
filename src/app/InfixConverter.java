@@ -27,30 +27,36 @@ public class InfixConverter {
         for (int i = 0; i < infix.length(); i++){
             char ch = infix.charAt(i);
 
-            if (Character.isLetterOrDigit(ch)){
-                postfix.append(ch);
+            if (Character.isDigit(ch)){
+                if (!postfix.isEmpty()) postfix.append(' ');
+                while( i < infix.length() &&  Character.isDigit(infix.charAt(i))){
+
+                    postfix.append(infix.charAt(i));
+                    i++;
+                }
+                i--;
             }
             else if (ch == '(') {
                 stack.push(ch);
             }
             else if (ch == ')') {
                 while (stack.peek() != '('){
-                    postfix.append(stack.pop());
+                    postfix.append(' ').append(stack.pop());
                 }
                 stack.pop();
             }
             else if (Operator.returnOperation(ch) != null) {
                 while (precedence(ch) <= precedence(stack.peek())){
-                    postfix.append(stack.pop());
+                    postfix.append(' ').append(stack.pop());
                 }
                 stack.push(ch);
             }
         }
 
         while (stack.peek() != '#') {
-            postfix.append(stack.pop());
+            postfix.append(' ').append(stack.pop());
         }
 
-        return postfix.toString();
+        return postfix.toString().trim();
     }
 }

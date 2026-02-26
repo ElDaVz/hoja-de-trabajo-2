@@ -11,25 +11,23 @@ public class Main {
 
     public static void main(String[] args) {
 
-        int stackOpcion;
+        int stackOpcion = 0 ;
         int listOpcion = 0;
 
-        try {
-            stackOpcion = StackFactory.askOption();
-            if (stackOpcion == 3) {
-                listOpcion = StackFactory.askListOption();
+        while (stackOpcion == 0) {
+            try {
+                stackOpcion = StackFactory.askOption();
+                if (stackOpcion == 3) {
+                    listOpcion = StackFactory.askListOption();
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("Error: " + e.getMessage() + " Intente de nuevo.");
+                stackOpcion = 0;
             }
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-            return;
         }
-
         Stack<Character> converterStack  = StackFactory.create(stackOpcion, listOpcion);
-        Stack<Integer>   calculatorStack = StackFactory.create(stackOpcion, listOpcion);
 
-
-        Calculator calc = Calculator.getInstance();
-        calc.setStack(calculatorStack);
+        Calculator calc = Calculator.getInstance(stackOpcion, listOpcion);
 
         InfixConverter converter = new InfixConverter(converterStack);
         List<String> lines = Reader.readFile("datos.txt");

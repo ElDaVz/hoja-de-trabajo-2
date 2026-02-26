@@ -8,24 +8,23 @@ package app;
 public class Calculator implements Calc{
 
     private static Calculator instance;
-    private Stack<Integer> stack;
+    private int stackOpcion;
+    private int listOpcion;
 
-    private Calculator() {
+    private Calculator(int stackOpcion, int listOpcion) {
+        this.stackOpcion = stackOpcion;
+        this.listOpcion  = listOpcion;
     }
 
-    public static Calculator getInstance() {
+    public static Calculator getInstance(int stackOpcion, int listOpcion) {
         if (instance == null) {
-            instance = new Calculator();
+            instance = new Calculator(stackOpcion, listOpcion);
         }
         return instance;
     }
 
-    public void setStack(Stack<Integer> stack) {
-        this.stack = stack;
-    }
-
     /**
-     * Evalúa una expresión postfix carácter por carácter.
+     * Evalúa una expresión postfix token por token.
      *
      * @param input expresión postfix a evaluar.
      * @return resultado de la expresión.
@@ -33,43 +32,37 @@ public class Calculator implements Calc{
      */
     @Override
     public double operate(String input) {
-        if (stack == null) {
-            throw new IllegalStateException("Debe asignar una implementación de Stack con setStack()");
-        }
+        Stack<Integer> stack = StackFactory.create(stackOpcion, listOpcion);
         while (!stack.isEmpty()) stack.pop();
-
 
         var OPERAND_COUNT = 0;
 
-        for(int i = 0; i < input.length(); i++){
-            var token = input.charAt(i);
-            var isOperator = Operator.returnOperation(token) != null;
+        for (var tokenStr : input.trim().split("\\s+")) {
+            if (tokenStr.isEmpty()) continue;
+            var isOperator = tokenStr.length() == 1
+                    && Operator.returnOperation(tokenStr.charAt(0)) != null;
 
-
-            if (Character.isDigit(token)) {
-                stack.push(Character.getNumericValue(token));
+            if (!isOperator) {
+                stack.push(Integer.parseInt(tokenStr));
                 OPERAND_COUNT++;
             }
 
-            else if (isOperator) {
+            else {
                 if (OPERAND_COUNT < 2) {
-                    throw new ArithmeticException("Operandos insuficientes para el operador: " + token);
+                    throw new ArithmeticException("Operandos insuficientes para el operador: " + tokenStr);
                 }
 
                 var operandoB = stack.pop();
                 var operandoA = stack.pop();
 
-                var op = Operator.returnOperation(token);
+                var op = Operator.returnOperation(tokenStr.charAt(0));
                 var resultado = op.operate(operandoA, operandoB);
 
                 stack.push(resultado);
                 OPERAND_COUNT--;
             }
-            else {
-                throw new IllegalArgumentException("Token invalido: " + token);
-            }
-
         }
+
         if (OPERAND_COUNT == 1) {
             return stack.peek();
         }

@@ -17,6 +17,7 @@ public class StackFactory {
             if (opcion < 1 || opcion > 3) throw new IllegalArgumentException("Opción fuera de rango.");
             return opcion;
         } catch (InputMismatchException e) {
+            sc.nextLine();
             throw new IllegalArgumentException("Entrada inválida. Debe ingresar un número entre 1 y 3.");
         }
     }
@@ -31,6 +32,7 @@ public class StackFactory {
             if (opcion < 1 || opcion > 2) throw new IllegalArgumentException("Opción fuera de rango.");
             return opcion;
         } catch (InputMismatchException e) {
+            sc.nextLine();
             throw new IllegalArgumentException("Entrada inválida. Debe ingresar un número entre 1 y 2.");
         }
     }
